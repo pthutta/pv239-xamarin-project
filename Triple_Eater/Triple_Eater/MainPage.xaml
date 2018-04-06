@@ -4,8 +4,35 @@
              xmlns:local="clr-namespace:Triple_Eater"
              x:Class="Triple_Eater.MainPage">
 
-	<Label Text="Welcome to Xamarin.Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Text="Triple Eater" VerticalOptions="Fill"/>
+            <Label Grid.Row="1" Text="Fill player names"/>
+            <ListView Grid.Row="2" ItemsSource="{Binding Players}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Entry Text="{Binding Name}"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+        
+        <Button Grid.Row="1" VerticalOptions="Fill" HorizontalOptions="Center"/>
+    </Grid>
 
 </ContentPage>

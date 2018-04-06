@@ -1,0 +1,3 @@
+jedno entry na vyplneni jmena a butten na potvrzeni pak prida hrace do Listu, ktery je na bindovany 
+
+ma Player implementovat :INotifyPropertyChanged ?
