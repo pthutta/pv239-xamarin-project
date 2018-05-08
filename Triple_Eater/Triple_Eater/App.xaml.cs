@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using Triple_Eater.Pages;
 using Xamarin.Forms;
 
 namespace Triple_Eater
@@ -13,7 +13,7 @@ namespace Triple_Eater
 		{
 			InitializeComponent();
 
-			MainPage = new Triple_Eater.MainPage();
+			MainPage = new NavigationPage(new MainPage());
 		}
 
 		protected override void OnStart ()

@@ -5,11 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Triple_Eater.DataModels;
+using Triple_Eater.Pages;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
-namespace Triple_Eater
+namespace Triple_Eater.Pages
 {
-    public partial class MainPage : ContentPage
+    public partial class MainPage : BasePage<BaseInfoPage>
     {
         private ObservableCollection<Player> _players = new ObservableCollection<Player>();
 
@@ -30,9 +32,24 @@ namespace Triple_Eater
 
             Players.Add(new Player()
             {
-                Name = "neco",
+                Name = "Player1",
             });
-
-		}
-	}
+		    Players.Add(new Player()
+		    {
+		        Name = "Player2",
+		    });
+		    Players.Add(new Player()
+		    {
+		        Name = "Player3",
+		    });
+		    Players.Add(new Player()
+		    {
+		        Name = "Player4",
+		    });
+		    Players.Add(new Player()
+		    {
+		        Name = "Player5",
+		    });
+        }
+    }
 }

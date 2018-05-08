@@ -1,9 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<d:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Triple_Eater"
-             x:Class="Triple_Eater.MainPage">
-
+             xmlns:d="clr-namespace:Triple_Eater.Pages"
+             x:TypeArguments="d:BaseInfoPage"
+             x:Class="Triple_Eater.Pages.MainPage">
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="5*"/>
@@ -12,13 +14,13 @@
 
         <Grid Grid.Row="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="3*"/>
                 <RowDefinition Height="2*"/>
-                <RowDefinition Height="5*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="6*"/>
             </Grid.RowDefinitions>
 
-            <Label Grid.Row="0" Text="Triple Eater" VerticalOptions="Fill"/>
-            <Label Grid.Row="1" Text="Fill player names"/>
+            <Label Grid.Row="0" Text="Triple Eater" VerticalOptions="CenterAndExpand" FontSize="Large" HorizontalOptions="CenterAndExpand"/>
+            <Label Grid.Row="1" Text="Fill player names" VerticalOptions="CenterAndExpand" FontSize="Medium" HorizontalOptions="CenterAndExpand"/>
             <ListView Grid.Row="2" ItemsSource="{Binding Players}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -31,8 +33,8 @@
                 </ListView.ItemTemplate>
             </ListView>
         </Grid>
-        
-        <Button Grid.Row="1" VerticalOptions="Fill" HorizontalOptions="Center"/>
+
+        <Button Grid.Row="1" VerticalOptions="Fill" HorizontalOptions="Center" Text="Done" Clicked="NextPageButton_OnClicked"/>
     </Grid>
 
-</ContentPage>
+</d:BasePage>
