@@ -16,5 +16,7 @@ namespace Triple_Eater.DataModels
 
         public IAction Action { get; set; }
 
+        public int AccusationCounter { get; set; }
+
     }
 }

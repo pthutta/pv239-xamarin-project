@@ -6,6 +6,7 @@ namespace Triple_Eater.DataModels
 {
     public interface IAction
     {
+        string Name { get; set; }
 
     }
 }
