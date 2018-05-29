@@ -29,27 +29,51 @@ namespace Triple_Eater.Pages
 		{
 			InitializeComponent();
             BindingContext = this;
+		}
 
-            Players.Add(new Player()
+        protected override async void OnAppearing()
+        {
+            Players = new ObservableCollection<Player>(
+                await App.Database.TryGetAllPlayersAsync()
+            );
+
+            if (Players.Count == 0)
             {
-                Name = "Player1",
-            });
-		    Players.Add(new Player()
-		    {
-		        Name = "Player2",
-		    });
-		    Players.Add(new Player()
-		    {
-		        Name = "Player3",
-		    });
-		    Players.Add(new Player()
-		    {
-		        Name = "Player4",
-		    });
-		    Players.Add(new Player()
-		    {
-		        Name = "Player5",
-		    });
+                Players.Add(new Player()
+                {
+                    Name = "Player1",
+                });
+                Players.Add(new Player()
+                {
+                    Name = "Player2",
+                });
+                Players.Add(new Player()
+                {
+                    Name = "Player3",
+                });
+                Players.Add(new Player()
+                {
+                    Name = "Player4",
+                });
+                Players.Add(new Player()
+                {
+                    Name = "Player5",
+                });
+
+                foreach (var player in Players)
+                {
+                    await App.Database.TryAddPlayerAsync(player);
+                }
+            }
+        }
+
+        protected override async void NextPageButton_OnClicked(object sender, EventArgs e)
+        {
+            foreach (var player in Players)
+            {
+                await App.Database.TryUpdatePlayerAsync(player);
+            }
+            base.NextPageButton_OnClicked(sender, e);
         }
     }
 }

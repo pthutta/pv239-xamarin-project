@@ -14,7 +14,7 @@ namespace Triple_Eater.Pages
             NavigationPage.SetHasNavigationBar(this, false);
         }
 
-        protected void NextPageButton_OnClicked(object sender, EventArgs e)
+        protected virtual void NextPageButton_OnClicked(object sender, EventArgs e)
         {
             var nextPage = new NavigationPage(new TNextPage());
             NavigationPage.SetHasNavigationBar(nextPage, false);
