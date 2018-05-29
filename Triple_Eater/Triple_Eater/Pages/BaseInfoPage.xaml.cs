@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Triple_Eater.Pages.RoleChoice;
 using Triple_Eater.DataModels;
+using Triple_Eater.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,37 +15,42 @@ namespace Triple_Eater.Pages
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class BaseInfoPage : ContentPage
 	{
-	    private ObservableCollection<Player> _players = new ObservableCollection<Player>();
-
-	    public ObservableCollection<Player> Players
-	    {
-	        get => _players;
-	        set
-	        {
-	            _players = value;
-	            OnPropertyChanged();
-	        }
-	    }
-
         public BaseInfoPage ()
 		{
 			InitializeComponent ();
-		    BindingContext = this;
         }
 
-	    protected async override void OnAppearing()
+	    protected override bool OnBackButtonPressed()
 	    {
-	        Players = new ObservableCollection<Player>(
-	                await App.Database.TryGetAllPlayersAsync()
-	        );
-            base.OnAppearing();
+	        DependencyService.Get<IMinimizeAppService>().Minimize();
+	        return true;
 	    }
 
         public void NextPageButton_OnClicked(object sender, EventArgs e)
         {
+            SetPlayerRoles();
+
             var nextPage = new NavigationPage(new RoleInfoInitPage31());
             NavigationPage.SetHasNavigationBar(nextPage, false);
             Application.Current.MainPage?.Navigation.PushAsync(nextPage);
+        }
+
+	    public async void SetPlayerRoles()
+	    {
+	        Random rng = new Random();
+	        var players = await App.Database.TryGetAllPlayersAsync();
+
+	        for (int i = 0; i < players.Count; i++)
+	        {
+	            var player = players[rng.Next(players.Count)];
+
+	            var role = (i < 2) ? Role.Glutton : Role.Flatmate;
+	            player.OriginalRole = role;
+	            player.CurrentRole = role;
+
+                players.Remove(player);
+	            await App.Database.TryUpdatePlayerAsync(player);
+	        }
         }
     }
 }

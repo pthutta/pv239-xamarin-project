@@ -6,12 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Triple_Eater.DataModels;
 using Triple_Eater.Pages;
+using Triple_Eater.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Triple_Eater.Pages
 {
-    public partial class MainPage : BasePage<BaseInfoPage>
+    public partial class MainPage : ContentPage
     {
         private ObservableCollection<Player> _players = new ObservableCollection<Player>();
 
@@ -39,26 +40,13 @@ namespace Triple_Eater.Pages
 
             if (Players.Count == 0)
             {
-                Players.Add(new Player()
+                for (int i = 0; i < 5; i++)
                 {
-                    Name = "Player1",
-                });
-                Players.Add(new Player()
-                {
-                    Name = "Player2",
-                });
-                Players.Add(new Player()
-                {
-                    Name = "Player3",
-                });
-                Players.Add(new Player()
-                {
-                    Name = "Player4",
-                });
-                Players.Add(new Player()
-                {
-                    Name = "Player5",
-                });
+                    Players.Add(new Player()
+                    {
+                        Name = "Player" + i,
+                    });
+                }
 
                 foreach (var player in Players)
                 {
@@ -67,13 +55,22 @@ namespace Triple_Eater.Pages
             }
         }
 
-        protected override async void NextPageButton_OnClicked(object sender, EventArgs e)
+        protected async void NextPageButton_OnClicked(object sender, EventArgs e)
         {
             foreach (var player in Players)
             {
                 await App.Database.TryUpdatePlayerAsync(player);
             }
-            base.NextPageButton_OnClicked(sender, e);
+
+            var nextPage = new NavigationPage(new BaseInfoPage());
+            NavigationPage.SetHasNavigationBar(nextPage, false);
+            Application.Current.MainPage?.Navigation.PushAsync(nextPage);
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            DependencyService.Get<IMinimizeAppService>().Minimize();
+            return true;
         }
     }
 }

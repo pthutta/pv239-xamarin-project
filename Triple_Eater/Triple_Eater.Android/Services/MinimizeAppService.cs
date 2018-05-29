@@ -20,7 +20,7 @@ namespace Triple_Eater.Droid.Services
     {
         public void Minimize()
         {
-            var alert = new AlertDialog.Builder((Activity)Application.Context);
+            var alert = new AlertDialog.Builder((Activity) Xamarin.Forms.Forms.Context);
             alert.SetTitle("Minimize");
             alert.SetMessage("Do you want to minimize this application?");
             alert.SetPositiveButton("Yes", (sender, args) =>
