@@ -97,6 +97,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\MinimizeAppService.cs" />
+    <Compile Include="Services\SQLiteConnectionStringFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

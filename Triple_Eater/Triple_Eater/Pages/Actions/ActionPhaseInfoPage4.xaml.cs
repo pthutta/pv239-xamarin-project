@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-using Xamarin.Forms;
+ using Triple_Eater.Services;
+ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Triple_Eater.Pages.Actions
@@ -23,5 +23,11 @@ namespace Triple_Eater.Pages.Actions
             NavigationPage.SetHasNavigationBar(nextPage, false);
             Application.Current.MainPage?.Navigation.PushAsync(nextPage);
         }
+
+	    protected override bool OnBackButtonPressed()
+	    {
+	        DependencyService.Get<IMinimizeAppService>().Minimize();
+	        return true;
+	    }
     }
 }
