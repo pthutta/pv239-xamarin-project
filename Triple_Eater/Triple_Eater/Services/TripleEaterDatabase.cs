@@ -21,6 +21,11 @@ namespace Triple_Eater.Services
             await _db.CreateTableAsync<Player>();
         }
 
+        public async Task DropDatabase()
+        {
+            await _db.DropTableAsync<Player>();
+        }
+
         public async Task<IList<Player>> TryGetAllPlayersAsync()
         {
             try
