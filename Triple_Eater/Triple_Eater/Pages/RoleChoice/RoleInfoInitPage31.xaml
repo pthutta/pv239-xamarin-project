@@ -1,12 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<d:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Triple_Eater"
+             xmlns:d="clr-namespace:Triple_Eater.Pages"
+             x:TypeArguments="d:RoleChoice.RoleInfoPage32"
              x:Class="Triple_Eater.Pages.RoleChoice.RoleInfoInitPage31">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
-</ContentPage>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="6*"/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Text="Triple Eater" VerticalOptions="CenterAndExpand" FontSize="Large" HorizontalOptions="CenterAndExpand"/>
+            <Label Grid.Row="1" Text="Fill player names" VerticalOptions="CenterAndExpand" FontSize="Medium" HorizontalOptions="CenterAndExpand"/>
+            <ListView Grid.Row="2" ItemsSource="{Binding Players}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Entry Text="{Binding Name}"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+
+        <Button Grid.Row="1" VerticalOptions="Fill" HorizontalOptions="Center" Text="Done" Clicked="NextPageButton_OnClicked"/>
+    </Grid>
+</d:BasePage>
