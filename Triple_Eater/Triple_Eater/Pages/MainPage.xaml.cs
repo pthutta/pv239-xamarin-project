@@ -65,6 +65,12 @@ namespace Triple_Eater.Pages
                     await App.Database.TryAddPlayerAsync(player);
                 }
             }
+
+            foreach (var player in Players)
+            {
+                player.AccusationCounter = 0;
+                player.WasProcessed = false;
+            }
         }
 
         protected override async void NextPageButton_OnClicked(object sender, EventArgs e)

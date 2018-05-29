@@ -21,5 +21,8 @@ namespace Triple_Eater.DataModels
 
         public int AccusationCounter { get; set; }
 
+        // Reset to false after every finished group of actions over players
+        public bool WasProcessed { get; set; }
+
     }
 }
