@@ -12,7 +12,7 @@ using Xamarin.Forms.Xaml;
 namespace Triple_Eater.Pages
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class BaseInfoPage : BasePage<BaseInfoPage>
+	public partial class BaseInfoPage : ContentPage
 	{
 	    private ObservableCollection<Player> _players = new ObservableCollection<Player>();
 
@@ -39,5 +39,12 @@ namespace Triple_Eater.Pages
 	        );
             base.OnAppearing();
 	    }
+
+        public void NextPageButton_OnClicked(object sender, EventArgs e)
+        {
+            var nextPage = new NavigationPage(new RoleInfoInitPage31());
+            NavigationPage.SetHasNavigationBar(nextPage, false);
+            Application.Current.MainPage?.Navigation.PushAsync(nextPage);
+        }
     }
 }
