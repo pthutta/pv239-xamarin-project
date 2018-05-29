@@ -20,9 +20,9 @@ namespace Triple_Eater
 			MainPage = new NavigationPage(new MainPage());
 		}
 
-		protected async override void OnStart ()
+		protected override async void OnStart ()
 		{
-		    await Database.InitDatabase();
+            await Database.InitDatabase();
         }
 
 		protected override void OnSleep ()

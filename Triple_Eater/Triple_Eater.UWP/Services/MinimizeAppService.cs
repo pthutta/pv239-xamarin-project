@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+
 using Windows.ApplicationModel.Core;
 using Windows.UI.Xaml.Controls;
 using Triple_Eater.Services;
@@ -20,7 +21,7 @@ namespace Triple_Eater.UWP.Services
             var alert = new ContentDialog
             {
                 Title = "Minimize",
-                Content = "ADo you want to minimize this application?",
+                Content = "Do you want to minimize this application?",
                 CloseButtonText = "No",
                 PrimaryButtonText = "Yes"
             };
@@ -28,7 +29,7 @@ namespace Triple_Eater.UWP.Services
             ContentDialogResult result = await alert.ShowAsync();
             if (result == ContentDialogResult.Primary)
             {
-                if (Form.ActiveForm != null) Form.ActiveForm.WindowState = FormWindowState.Minimized;
+                Console.WriteLine("Not supported by UWP.");
             }
         }
     }
