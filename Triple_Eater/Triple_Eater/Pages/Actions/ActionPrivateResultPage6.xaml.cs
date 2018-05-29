@@ -16,5 +16,12 @@ namespace Triple_Eater.Pages.Actions
 		{
 			InitializeComponent ();
 		}
-	}
+
+        public void NextPageButton_OnClicked(object sender, EventArgs e)
+        {
+            var nextPage = new NavigationPage(new ActionCountdownPage7());
+            NavigationPage.SetHasNavigationBar(nextPage, false);
+            Application.Current.MainPage?.Navigation.PushAsync(nextPage);
+        }
+    }
 }
