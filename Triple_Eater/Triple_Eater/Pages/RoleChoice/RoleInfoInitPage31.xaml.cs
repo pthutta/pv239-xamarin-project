@@ -52,7 +52,7 @@ namespace Triple_Eater.Pages.RoleChoice
             );
             base.OnAppearing();
 
-            _currentPlayer = Players.Where((x) => !x.WasProcessed).FirstOrDefault();
+            CurrentPlayer = Players.Where((x) => !x.WasProcessed).FirstOrDefault();
         }
 
         public async Task NextPageButton_OnClickedAsync(object sender, EventArgs e)
@@ -60,16 +60,7 @@ namespace Triple_Eater.Pages.RoleChoice
             _currentPlayer.WasProcessed = true;
             await App.Database.TryUpdatePlayerAsync(_currentPlayer);
 
-            NavigationPage nextPage = null;
-            if (Players.Where((x) => !x.WasProcessed).Count() == 0)
-            {
-                nextPage = new NavigationPage(new RoleInfoInitPage31());
-            }
-            else
-            {
-                nextPage = new NavigationPage(new ActionPhaseInfoPage4());
-            }
-
+            NavigationPage nextPage = new NavigationPage(new RoleInfoPage32(_currentPlayer));
             NavigationPage.SetHasNavigationBar(nextPage, false); 
             Application.Current.MainPage?.Navigation.PushAsync(nextPage);
         }

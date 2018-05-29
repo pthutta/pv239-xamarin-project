@@ -40,7 +40,8 @@ namespace Triple_Eater.Pages
 	        Random rng = new Random();
 	        var players = await App.Database.TryGetAllPlayersAsync();
 
-	        for (int i = 0; i < players.Count; i++)
+            int playersCount = players.Count;
+            for (int i = 0; i < playersCount; i++)
 	        {
 	            var player = players[rng.Next(players.Count)];
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,28 +15,58 @@ namespace Triple_Eater.Pages.RoleChoice
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class RoleInfoPage32 : ContentPage
 	{
-        private Player _player;
+        private Player _currentPlayer;
+        private ObservableCollection<Player> _players = new ObservableCollection<Player>();
 
-        public Player Player
+        public ObservableCollection<Player> Players
         {
-            get => _player;
+            get => _players;
             set
             {
-                _player = value;
+                _players = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public Player CurrentPlayer
+        {
+            get => _currentPlayer;
+            set
+            {
+                _currentPlayer = value;
+                RoleLabel.Text = "You play as a " + value?.OriginalRole;
                 OnPropertyChanged();
             }
                 
         }
 
-		public RoleInfoPage32(Player player)
+		public RoleInfoPage32(Player currentPlayer)
         {
-			InitializeComponent ();
-            _player = player;
+            InitializeComponent();
+            BindingContext = this;
+            CurrentPlayer = currentPlayer;
 		}
+
+        protected async override void OnAppearing()
+        {
+            Players = new ObservableCollection<Player>(
+                    await App.Database.TryGetAllPlayersAsync()
+            );
+            base.OnAppearing();
+        }
 
         public void NextPageButton_OnClicked(object sender, EventArgs e)
         {
-            var nextPage = new NavigationPage(new ActionPhaseInfoPage4());
+            NavigationPage nextPage;
+            int remainingPlayers = Players.Where((x) => !x.WasProcessed).Count();
+            if (remainingPlayers != 0)
+            {
+                nextPage = new NavigationPage(new RoleInfoInitPage31());
+            }
+            else
+            {
+                nextPage = new NavigationPage(new ActionPhaseInfoPage4());
+            }
             NavigationPage.SetHasNavigationBar(nextPage, false);
             Application.Current.MainPage?.Navigation.PushAsync(nextPage);
         }

@@ -11,12 +11,28 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Text="{Binding CurrentPlayer}"/>
+        <Label 
+            Grid.Row="0" 
+            Text="{Binding CurrentPlayer.Name}" 
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+        />
 
-        <Label Grid.Row="1" Text="Press DONE to receive secret information about your attitute towards eating other's food."/>
+        <Label 
+            Margin="25, 5, 25, 5"
+            HorizontalTextAlignment="Center"
+            Grid.Row="1" Text="Press DONE to receive secret information about your attitute towards eating other's food."
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+        />
 
-        <Label Grid.Row="2" Text="Do not show the next screen with sensitive information to any other player."/>
+        <Label 
+            Margin="25, 5, 25, 5"
+            HorizontalTextAlignment="Center"
+            Grid.Row="2" 
+            Text="Do not show the next screen with sensitive information to any other player."
+        />
 
-        <Button Grid.Row="3" VerticalOptions="Fill" HorizontalOptions="Center" Text="Done" Clicked="NextPageButton_OnClicked"/>
+        <Button Grid.Row="3" VerticalOptions="Fill" HorizontalOptions="Center" Text="Done" Clicked="NextPageButton_OnClickedAsync"/>
     </Grid>
 </ContentPage>
