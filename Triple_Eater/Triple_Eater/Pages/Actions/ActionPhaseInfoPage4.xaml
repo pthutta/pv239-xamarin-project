@@ -8,6 +8,23 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center" Text="OPERATIONS PHASE"/>
+
+            <Label Grid.Row="1" Margin="25, 5, 25, 5" VerticalOptions="Center" HorizontalOptions="Center" Text="Each person will be given one
+operation before you move on to the Accusation Phase."/>
+
+            <Label Grid.Row="2" Margin="25, 5, 25, 5" VerticalOptions="Center" HorizontalOptions="Center" Text="Always read the operation 
+out loud before handing the device to the assigned agent to secretly look at the results."/>
+
+        </Grid>
+
         <Button Grid.Row="1" VerticalOptions="Fill" HorizontalOptions="Center" Text="Done" Clicked="NextPageButton_OnClicked"/>
     </Grid>
 </ContentPage>

@@ -17,7 +17,7 @@ namespace Triple_Eater.DataModels
 
         public Role CurrentRole { get; set; }
 
-        public Guid ActionId { get; set; }
+        public Operation Operation { get; set; }
 
         public int AccusationCounter { get; set; }
 

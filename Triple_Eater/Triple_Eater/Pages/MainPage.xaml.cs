@@ -44,7 +44,7 @@ namespace Triple_Eater.Pages
                 {
                     Players.Add(new Player()
                     {
-                        Name = "Player" + i,
+                        Name = "Player" + (i+1),
                     });
                 }
 

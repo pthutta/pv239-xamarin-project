@@ -22,7 +22,11 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
 
-            <Label Grid.Row="1" Grid.ColumnSpan="2" VerticalOptions="Fill" HorizontalOptions="Center" Text="This is basic info about this game."/>
+            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Center" Text="MISSION BRIEFING"/>
+
+            <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="25, 5, 25, 5" VerticalOptions="Fill" HorizontalOptions="Center" Text="You have received intelligence 
+that 2 out of the 5 of you are gluttons eating your food from the fridge! Your briefing will tell you which group you 
+belong to and what is your objective. ..."/>
 
             <Label Grid.Row="2" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" Text="Image"/>
             <Label Grid.Row="3" Grid.Column="0" HorizontalOptions="Center" Text="Glutton"/>
