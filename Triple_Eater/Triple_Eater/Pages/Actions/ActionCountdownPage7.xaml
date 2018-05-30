@@ -4,10 +4,31 @@
              x:Class="Triple_Eater.Pages.Actions.ActionCountdownPage7">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="5*"/>
             <RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
 
-        <Button Grid.Row="1" VerticalOptions="Fill" HorizontalOptions="Center" Text="Done" Clicked="NextPageButton_OnClicked"/>
+        <Label 
+            Grid.Row="0" 
+            HorizontalTextAlignment="Center"
+            Text="Waiting for next event to happen.." 
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+        />
+
+        <Label 
+            x:Name ="Clock"
+            Grid.Row="1"
+        />
+
+        <Label 
+            Grid.Row="2"
+            Margin="25, 5, 25, 5"
+            HorizontalTextAlignment="Center"
+            Text="Return the device to the table. Now is the time to tell others about your new information. You may lie or tell the truth." 
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+        />
     </Grid>
 </ContentPage>
