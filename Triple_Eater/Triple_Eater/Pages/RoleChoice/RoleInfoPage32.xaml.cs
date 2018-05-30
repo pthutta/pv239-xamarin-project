@@ -55,7 +55,7 @@ namespace Triple_Eater.Pages.RoleChoice
             base.OnAppearing();
         }
 
-        public void NextPageButton_OnClicked(object sender, EventArgs e)
+        public async Task NextPageButton_OnClickedAsync(object sender, EventArgs e)
         {
             NavigationPage nextPage;
             int remainingPlayers = Players.Where((x) => !x.WasProcessed).Count();
@@ -66,6 +66,10 @@ namespace Triple_Eater.Pages.RoleChoice
             else
             {
                 nextPage = new NavigationPage(new ActionPhaseInfoPage4());
+                foreach (var player in Players){
+                    player.WasProcessed = false;
+                    await App.Database.TryUpdatePlayerAsync(player);
+                }
             }
             NavigationPage.SetHasNavigationBar(nextPage, false);
             Application.Current.MainPage?.Navigation.PushAsync(nextPage);
