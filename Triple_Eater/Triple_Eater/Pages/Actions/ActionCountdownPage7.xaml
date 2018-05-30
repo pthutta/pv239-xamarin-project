@@ -9,8 +9,16 @@
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
         <Label 
+            x:Name="ActionOverviewLabel"
             Grid.Row="0" 
+            Grid.Column="1"
             HorizontalTextAlignment="Center"
             Text="Waiting for next event to happen.." 
             VerticalOptions="Center" 
@@ -20,15 +28,31 @@
         <Label 
             x:Name ="Clock"
             Grid.Row="1"
+            Grid.Column="1"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
         />
 
         <Label 
+            x:Name="ActionInfoLabel"
             Grid.Row="2"
+            Grid.Column="1"
             Margin="25, 5, 25, 5"
             HorizontalTextAlignment="Center"
             Text="Return the device to the table. Now is the time to tell others about your new information. You may lie or tell the truth." 
             VerticalOptions="Center" 
             HorizontalOptions="Center"
         />
+
+
+        <Button 
+            x:Name="SkipButton"
+            Grid.Row="2" 
+            Grid.Column="2" 
+            VerticalOptions= "Fill"
+            HorizontalOptions="Center" 
+            Clicked="NextPageButton_OnClicked"
+        />
+
     </Grid>
 </ContentPage>

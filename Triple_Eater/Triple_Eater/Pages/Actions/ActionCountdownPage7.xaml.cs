@@ -13,9 +13,21 @@ namespace Triple_Eater.Pages.Actions
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ActionCountdownPage7 : ContentPage
-	{
-        private Player _currentPlayer;
+    {
         private int _secondsElapsed = 0;
+        private int _maxSeconds = 0;
+        private int _remainingPlayers;
+        private ObservableCollection<Player> _players = new ObservableCollection<Player>();
+
+        public ObservableCollection<Player> Players
+        {
+            get => _players;
+            set
+            {
+                _players = value;
+                OnPropertyChanged();
+            }
+        }
 
         public int SecondsElapsed
         {
@@ -23,52 +35,67 @@ namespace Triple_Eater.Pages.Actions
             set { _secondsElapsed = value; }
         }
 
-        public Player CurrentPlayer
-        {
-            get => _currentPlayer;
-            set
-            {
-                _currentPlayer = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public ActionCountdownPage7(Player currentPlayer)
+        public ActionCountdownPage7()
         {
             InitializeComponent();
             BindingContext = this;
-            CurrentPlayer = currentPlayer;
+            SkipButton.Text = "S" + Environment.NewLine + "k" + Environment.NewLine + "i" + Environment.NewLine + "p";
         }
 
         protected async override void OnAppearing()
         {
-            Device.StartTimer(new TimeSpan(0, 0, 1), () =>
-            {
-                if (SecondsElapsed < 10)
-                {
-                    //update the count down timer with 1 second here 
-                    Clock.Text = SecondsElapsed.ToString();
-                    SecondsElapsed++;
-                    return true;
-                }
-                return false;
-            });
+            base.OnAppearing();
 
+            Players = new ObservableCollection<Player>(
+                    await App.Database.TryGetAllPlayersAsync()
+            );
+            _remainingPlayers = Players.Where((x) => !x.WasProcessed).Count();
+            _maxSeconds = 10;
+
+            // Set next page
             NavigationPage nextPage;
-            var players = await App.Database.TryGetAllPlayersAsync();
-            int remainingPlayers = players.Where((x) => !x.WasProcessed).Count();
-            if (remainingPlayers != 0)
+            if (_remainingPlayers == 0)
             {
+                _maxSeconds = 120;
+
+                ActionOverviewLabel.Text = "Discussion phase";
+                ActionInfoLabel.Text = "";
+                foreach (var player in Players)
+                {
+                    ActionInfoLabel.Text +=
+                        player.Name + " - " + player.Operation + Environment.NewLine;
+                }
+                ActionInfoLabel.HorizontalTextAlignment = TextAlignment.Start;
+                ActionInfoLabel.Margin = new Thickness(35, 5, 25, 5);
                 nextPage = new NavigationPage(new FinalDiscussionPage8());
             }
             else
             {
-                nextPage = new NavigationPage(new ActionPhaseInfoPage4());
+                nextPage = new NavigationPage(new ActionPublicPage5());
             }
             NavigationPage.SetHasNavigationBar(nextPage, false);
-            Application.Current.MainPage?.Navigation.PushAsync(nextPage);
 
-            base.OnAppearing();
+            // Timer
+            Clock.Text = GetClockFormat(_maxSeconds, SecondsElapsed);
+            Device.StartTimer(new TimeSpan(0, 0, 1), () =>
+            {
+                if (SecondsElapsed < _maxSeconds)
+                {
+                    //update the count down timer with 1 second here 
+                    SecondsElapsed++;
+                    Clock.Text = GetClockFormat(_maxSeconds, SecondsElapsed);
+                    return true;
+                }
+
+                Application.Current.MainPage?.Navigation.PushAsync(nextPage);
+                return false;
+            });
+        }
+
+
+        public void NextPageButton_OnClicked(object sender, EventArgs e)
+        {
+            SecondsElapsed = _maxSeconds;
         }
 
         protected override bool OnBackButtonPressed()
@@ -76,5 +103,15 @@ namespace Triple_Eater.Pages.Actions
 	        DependencyService.Get<IMinimizeAppService>().Minimize();
 	        return true;
 	    }
+
+        private string GetClockFormat(int maxSeconds, int elapsedSeconds)
+        {
+            int remainingSeconds = maxSeconds - elapsedSeconds;
+            int minutes = remainingSeconds / 60;
+            int seconds = remainingSeconds % 60;
+            return seconds > 9 ? 
+                '0' + minutes.ToString() + ':' + seconds.ToString()
+                : '0' + minutes.ToString() + ":0" + seconds.ToString();
+        }
     }
 }
