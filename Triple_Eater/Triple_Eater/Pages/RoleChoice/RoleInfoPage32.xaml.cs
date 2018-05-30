@@ -66,20 +66,26 @@ namespace Triple_Eater.Pages.RoleChoice
             else
             {
                 nextPage = new NavigationPage(new ActionPhaseInfoPage4());
-                foreach (var player in Players){
-                    player.WasProcessed = false;
-                    await App.Database.TryUpdatePlayerAsync(player);
-                }
+                await ResetWasProcessedFlag();
             }
             NavigationPage.SetHasNavigationBar(nextPage, false);
             Application.Current.MainPage?.Navigation.PushAsync(nextPage);
         }
 
-	    protected override bool OnBackButtonPressed()
+        protected override bool OnBackButtonPressed()
 	    {
 	        DependencyService.Get<IMinimizeAppService>().Minimize();
 	        return true;
-	    }
+        }
+
+        private async Task ResetWasProcessedFlag()
+        {
+            foreach (var player in Players)
+            {
+                player.WasProcessed = false;
+                await App.Database.TryUpdatePlayerAsync(player);
+            }
+        }
     }
 
 }

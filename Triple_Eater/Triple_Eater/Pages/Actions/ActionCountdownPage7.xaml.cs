@@ -67,7 +67,9 @@ namespace Triple_Eater.Pages.Actions
                 }
                 ActionInfoLabel.HorizontalTextAlignment = TextAlignment.Start;
                 ActionInfoLabel.Margin = new Thickness(35, 5, 25, 5);
-                nextPage = new NavigationPage(new FinalDiscussionPage8());
+                nextPage = new NavigationPage(new AccusationPublicPage9());
+
+                await ResetWasProcessedFlag();
             }
             else
             {
@@ -92,7 +94,6 @@ namespace Triple_Eater.Pages.Actions
             });
         }
 
-
         public void NextPageButton_OnClicked(object sender, EventArgs e)
         {
             SecondsElapsed = _maxSeconds;
@@ -102,7 +103,16 @@ namespace Triple_Eater.Pages.Actions
 	    {
 	        DependencyService.Get<IMinimizeAppService>().Minimize();
 	        return true;
-	    }
+        }
+
+        private async Task ResetWasProcessedFlag()
+        {
+            foreach (var player in Players)
+            {
+                player.WasProcessed = false;
+                await App.Database.TryUpdatePlayerAsync(player);
+            }
+        }
 
         private string GetClockFormat(int maxSeconds, int elapsedSeconds)
         {
