@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Triple_Eater.DataModels;
 using Triple_Eater.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -12,7 +13,7 @@ namespace Triple_Eater.Pages.Actions
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ActionPrivateResultPage6 : ContentPage
 	{
-		public ActionPrivateResultPage6 ()
+		public ActionPrivateResultPage6 (Player currentPlayer)
 		{
 			InitializeComponent ();
 		}

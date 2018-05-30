@@ -15,19 +15,7 @@ namespace Triple_Eater.Pages.RoleChoice
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class RoleInfoInitPage31 : ContentPage
     {
-
-        private ObservableCollection<Player> _players = new ObservableCollection<Player>();
         private Player _currentPlayer;
-
-        public ObservableCollection<Player> Players
-        {
-            get => _players;
-            set
-            {
-                _players = value;
-                OnPropertyChanged();
-            }
-        }
 
         public Player CurrentPlayer
         {
@@ -45,24 +33,23 @@ namespace Triple_Eater.Pages.RoleChoice
             BindingContext = this;
         }
 
-        protected async override void OnAppearing()
+        protected override async void OnAppearing()
         {
-            Players = new ObservableCollection<Player>(
-                    await App.Database.TryGetAllPlayersAsync()
-            );
             base.OnAppearing();
 
-            var remainingPlayers = Players.Where((x) => !x.WasProcessed).ToList();
+            var players = await App.Database.TryGetAllPlayersAsync();
+            
+            var remainingPlayers = players.Where((x) => !x.WasProcessed).ToList();
             var random = new Random();
-            CurrentPlayer = remainingPlayers[random.Next(remainingPlayers.Count())];
+            CurrentPlayer = remainingPlayers[random.Next(remainingPlayers.Count)];
         }
 
         public async Task NextPageButton_OnClickedAsync(object sender, EventArgs e)
         {
-            _currentPlayer.WasProcessed = true;
-            await App.Database.TryUpdatePlayerAsync(_currentPlayer);
+            CurrentPlayer.WasProcessed = true;
+            await App.Database.TryUpdatePlayerAsync(CurrentPlayer);
 
-            NavigationPage nextPage = new NavigationPage(new RoleInfoPage32(_currentPlayer));
+            NavigationPage nextPage = new NavigationPage(new RoleInfoPage32(CurrentPlayer));
             NavigationPage.SetHasNavigationBar(nextPage, false); 
             Application.Current.MainPage?.Navigation.PushAsync(nextPage);
         }

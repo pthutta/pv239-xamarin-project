@@ -47,7 +47,7 @@ namespace Triple_Eater.Pages.RoleChoice
             CurrentPlayer = currentPlayer;
 		}
 
-        protected async override void OnAppearing()
+        protected override async void OnAppearing()
         {
             Players = new ObservableCollection<Player>(
                     await App.Database.TryGetAllPlayersAsync()
@@ -55,10 +55,10 @@ namespace Triple_Eater.Pages.RoleChoice
             base.OnAppearing();
         }
 
-        public async Task NextPageButton_OnClickedAsync(object sender, EventArgs e)
+        public async void NextPageButton_OnClicked(object sender, EventArgs e)
         {
             NavigationPage nextPage;
-            int remainingPlayers = Players.Where((x) => !x.WasProcessed).Count();
+            int remainingPlayers = Players.Count(x => !x.WasProcessed);
             if (remainingPlayers != 0)
             {
                 nextPage = new NavigationPage(new RoleInfoInitPage31());
