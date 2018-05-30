@@ -16,8 +16,8 @@
     <Compile Update="Pages\Actions\ActionPhaseInfoPage4.xaml.cs">
       <DependentUpon>ActionPhaseInfoPage4.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Pages\Actions\ActionPrivateResultPage6.xaml.cs">
-      <DependentUpon>ActionPrivateResultPage6.xaml</DependentUpon>
+    <Compile Update="Pages\Actions\SecretIntelPage62.xaml.cs">
+      <DependentUpon>SecretIntelPage62.xaml</DependentUpon>
     </Compile>
     <Compile Update="Pages\Actions\ActionPublicPage5.xaml.cs">
       <DependentUpon>ActionPublicPage5.xaml</DependentUpon>
@@ -35,7 +35,6 @@
 
   <ItemGroup>
     <Folder Include="Controls\" />
-    <Folder Include="Converters\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -45,10 +44,22 @@
     <EmbeddedResource Update="Pages\Actions\ActionPhaseInfoPage4.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\Actions\ActionPrivateResultPage6.xaml">
+    <EmbeddedResource Update="Pages\Actions\AnonymousTipPage63.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Actions\NeighborhoodGossipPage64.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Actions\NightPhotographsPage65.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Actions\SecretIntelPage62.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\Actions\ActionPublicPage5.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Actions\ConfessionPage61.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\BaseInfoPage.xaml">

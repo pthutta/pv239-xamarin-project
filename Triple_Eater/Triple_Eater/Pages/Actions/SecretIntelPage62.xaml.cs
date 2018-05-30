@@ -11,11 +11,25 @@ using Xamarin.Forms.Xaml;
 namespace Triple_Eater.Pages.Actions
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class ActionPrivateResultPage6 : ContentPage
+	public partial class SecretIntelPage62 : ContentPage
 	{
-		public ActionPrivateResultPage6 (Player currentPlayer)
+	    private Player _currentPlayer;
+
+	    public Player CurrentPlayer
+	    {
+	        get => _currentPlayer;
+	        set
+	        {
+	            _currentPlayer = value;
+	            OnPropertyChanged();
+	        }
+	    }
+
+        public SecretIntelPage62(Player currentPlayer)
 		{
 			InitializeComponent ();
+		    BindingContext = this;
+            CurrentPlayer = currentPlayer;
 		}
 
         public void NextPageButton_OnClicked(object sender, EventArgs e)
