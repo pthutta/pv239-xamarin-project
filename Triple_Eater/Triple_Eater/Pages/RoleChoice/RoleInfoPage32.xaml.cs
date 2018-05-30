@@ -35,9 +35,9 @@ namespace Triple_Eater.Pages.RoleChoice
             {
                 _currentPlayer = value;
                 RoleLabel.Text = "You play as a " + value?.OriginalRole;
+                RoleImage.Source = value?.OriginalRole == Role.Glutton ? "Glutton.png" : "Flatmates.jpg";
                 OnPropertyChanged();
             }
-                
         }
 
 		public RoleInfoPage32(Player currentPlayer)

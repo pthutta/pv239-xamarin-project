@@ -52,7 +52,9 @@ namespace Triple_Eater.Pages.RoleChoice
             );
             base.OnAppearing();
 
-            CurrentPlayer = Players.Where((x) => !x.WasProcessed).FirstOrDefault();
+            var remainingPlayers = Players.Where((x) => !x.WasProcessed).ToList();
+            var random = new Random();
+            CurrentPlayer = remainingPlayers[random.Next(remainingPlayers.Count())];
         }
 
         public async Task NextPageButton_OnClickedAsync(object sender, EventArgs e)
