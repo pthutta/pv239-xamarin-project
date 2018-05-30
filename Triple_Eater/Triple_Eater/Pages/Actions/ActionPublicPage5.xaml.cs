@@ -21,9 +21,39 @@ namespace Triple_Eater.Pages.Actions
 	        set
 	        {
 	            _currentPlayer = value;
-	            OnPropertyChanged();
+	            UpdateTexts(_currentPlayer);
+                OnPropertyChanged();
 	        }
 	    }
+
+	    private void UpdateTexts(Player player)
+	    {
+	        switch (player.Operation)
+	        {
+	            case Operation.Confession:
+	                OperationLabel.Text = "This is operation text.";
+                    break;
+
+	            case Operation.SecretIntel:
+	                OperationLabel.Text = "This is operation text.";
+                    break;
+
+	            case Operation.AnonymousTip:
+	                OperationLabel.Text = "This is operation text.";
+                    break;
+
+	            case Operation.NeighborhoodGossip:
+	                OperationLabel.Text = "This is operation text.";
+                    break;
+
+	            case Operation.NightPhotographs:
+	                OperationLabel.Text = "This is operation text.";
+                    break;
+
+	            default:
+	                throw new ArgumentOutOfRangeException();
+	        }
+        }
 
         public ActionPublicPage5 ()
 		{
@@ -40,7 +70,6 @@ namespace Triple_Eater.Pages.Actions
 	        var remainingPlayers = players.Where((x) => !x.WasProcessed).ToList();
 	        var random = new Random();
 	        CurrentPlayer = remainingPlayers[random.Next(remainingPlayers.Count)];
-	        Title = CurrentPlayer.Name;
 	    }
 
         public async void NextPageButton_OnClicked(object sender, EventArgs e)
@@ -52,23 +81,23 @@ namespace Triple_Eater.Pages.Actions
             switch (CurrentPlayer.Operation)
             {
                 case Operation.Confession:
-                    nextPage = new NavigationPage(new ActionPrivateResultPage6(CurrentPlayer));
+                    nextPage = new NavigationPage(new ConfessionPage61(CurrentPlayer));
                     break;
 
                 case Operation.SecretIntel:
-                    nextPage = new NavigationPage(new ActionPrivateResultPage6(CurrentPlayer));
+                    nextPage = new NavigationPage(new SecretIntelPage62(CurrentPlayer));
                     break;
 
                 case Operation.AnonymousTip:
-                    nextPage = new NavigationPage(new ActionPrivateResultPage6(CurrentPlayer));
+                    nextPage = new NavigationPage(new AnonymousTipPage63(CurrentPlayer));
                     break;
 
                 case Operation.NeighborhoodGossip:
-                    nextPage = new NavigationPage(new ActionPrivateResultPage6(CurrentPlayer));
+                    nextPage = new NavigationPage(new NeighborhoodGossipPage64(CurrentPlayer));
                     break;
 
                 case Operation.NightPhotographs:
-                    nextPage = new NavigationPage(new ActionPrivateResultPage6(CurrentPlayer));
+                    nextPage = new NavigationPage(new NightPhotographsPage65(CurrentPlayer));
                     break;
 
                 default:
