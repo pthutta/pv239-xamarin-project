@@ -22,6 +22,7 @@ namespace Triple_Eater
 
 		protected override async void OnStart ()
 		{
+		    //await Database.DropDatabase();
             await Database.InitDatabase();
         }
 

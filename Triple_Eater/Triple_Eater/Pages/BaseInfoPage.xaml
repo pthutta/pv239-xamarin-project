@@ -28,10 +28,10 @@
 that 2 out of the 5 of you are gluttons eating your food from the fridge! Your briefing will tell you which group you 
 belong to and what is your objective. ..."/>
 
-            <Label Grid.Row="2" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" Text="Image"/>
+            <Image Grid.Row="2" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" Source="Glutton.png"/>
             <Label Grid.Row="3" Grid.Column="0" HorizontalOptions="Center" Text="Glutton"/>
 
-            <Label Grid.Row="2" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Text="Image"/>
+            <Image Grid.Row="2" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Source="Flatmates.jpg"/>
             <Label Grid.Row="3" Grid.Column="1" HorizontalOptions="Center" Text="Flatmate"/>
         </Grid>
 

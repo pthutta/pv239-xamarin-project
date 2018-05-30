@@ -34,6 +34,8 @@ namespace Triple_Eater.Pages
 
         protected override async void OnAppearing()
         {
+            base.OnAppearing();
+
             Players = new ObservableCollection<Player>(
                 await App.Database.TryGetAllPlayersAsync()
             );
