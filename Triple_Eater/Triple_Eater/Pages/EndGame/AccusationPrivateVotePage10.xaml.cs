@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,17 @@ namespace Triple_Eater.Pages.EndGame
 	public partial class AccusationPrivateVotePage10 : ContentPage
 	{
         private Player _currentPlayer;
+        private ObservableCollection<Player> _players = new ObservableCollection<Player>();
 
+        public ObservableCollection<Player> Players
+        {
+            get => _players;
+            set
+            {
+                _players = value;
+                OnPropertyChanged();
+            }
+        }
         public Player CurrentPlayer
         {
             get => _currentPlayer;
@@ -31,17 +42,50 @@ namespace Triple_Eater.Pages.EndGame
             CurrentPlayer = player;
         }
 
-        public void NextPageButton_OnClicked(object sender, EventArgs e)
+        protected override async void OnAppearing()
         {
-            var nextPage = new NavigationPage(new AccusationResultsPage11());
+            base.OnAppearing();
+
+            Players = new ObservableCollection<Player>((
+                await App.Database.TryGetAllPlayersAsync()).Where(player => player.Name != CurrentPlayer.Name)
+            );
+        }
+
+        public async void NextPageButton_OnClicked(object sender, EventArgs e)
+        {
+            var selectedPlayer = Players.FirstOrDefault(player => player.Name == ((Button)sender).Text);
+            selectedPlayer.AccusationCounter++;
+            await App.Database.TryUpdatePlayerAsync(selectedPlayer);
+            Console.WriteLine(selectedPlayer.AccusationCounter);
+
+            NavigationPage nextPage;
+            int remainingPlayers = Players.Count(x => !x.WasProcessed);
+            if (remainingPlayers != 0)
+            {
+                nextPage = new NavigationPage(new AccusationPublicPage9());
+            }
+            else
+            {
+                nextPage = new NavigationPage(new AccusationResultsPage11());
+                await ResetWasProcessedFlag();
+            }
             NavigationPage.SetHasNavigationBar(nextPage, false);
             Application.Current.MainPage?.Navigation.PushAsync(nextPage);
         }
 
-	    protected override bool OnBackButtonPressed()
+        protected override bool OnBackButtonPressed()
 	    {
 	        DependencyService.Get<IMinimizeAppService>().Minimize();
 	        return true;
 	    }
+
+        private async Task ResetWasProcessedFlag()
+        {
+            foreach (var player in Players)
+            {
+                player.WasProcessed = false;
+                await App.Database.TryUpdatePlayerAsync(player);
+            }
+        }
     }
 }
