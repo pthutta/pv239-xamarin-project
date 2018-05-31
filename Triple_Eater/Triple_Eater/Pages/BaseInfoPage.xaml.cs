@@ -43,13 +43,14 @@ namespace Triple_Eater.Pages
             int playersCount = players.Count;
             for (int i = 0; i < playersCount; i++)
 	        {
-	            var player = players[rng.Next(players.Count)];
+                int index = rng.Next(players.Count);
+                var player = players[index];
 
 	            var role = (i < 2) ? Role.Glutton : Role.Flatmate;
 	            player.OriginalRole = role;
 	            player.CurrentRole = role;
 
-                players.Remove(player);
+                players.RemoveAt(index);
 	            App.Database.TryUpdatePlayerAsync(player);
 	        }
         }
