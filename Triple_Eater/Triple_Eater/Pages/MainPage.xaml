@@ -19,7 +19,7 @@
 
             <Label Grid.Row="0" Text="Triple Eater" VerticalOptions="CenterAndExpand" FontSize="Large" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"/>
             <Label Grid.Row="1" Text="Fill player names" VerticalOptions="CenterAndExpand" FontSize="Medium" HorizontalOptions="CenterAndExpand"/>
-            <ListView Grid.Row="2" ItemsSource="{Binding Players}"  IsEnabled="False">
+            <ListView Grid.Row="2" ItemsSource="{Binding Players}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
