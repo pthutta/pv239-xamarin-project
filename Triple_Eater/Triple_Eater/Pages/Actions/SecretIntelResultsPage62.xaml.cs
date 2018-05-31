@@ -38,7 +38,7 @@ namespace Triple_Eater.Pages.Actions
             }
             else
             {
-                ResultLabel.Text = "Intel reveals that at none of them is a glutton.";
+                ResultLabel.Text = "Intel reveals that none of them is a glutton.";
                 RoleImage.Source = "Flatmates.jpg";
             }
         }

@@ -40,7 +40,7 @@ namespace Triple_Eater.Pages.Actions
             var operations = new List<Operation>
             {
                 Operation.Confession,
-                Operation.SecretIntel,
+                Operation.ForgetfulPartner,
                 Operation.AnonymousTip,
                 Operation.NeighborhoodGossip,
                 Operation.NightPhotographs

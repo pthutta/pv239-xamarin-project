@@ -25,7 +25,8 @@
                 </Grid.RowDefinitions>
 
                 <Label Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center" Margin="25, 5, 25, 5"
-                       Text="{Binding OtherPlayer.Name, StringFormat='After meeting your source at a very remote location, they finally spill out the beans. You now know that {0} is:'}"/>
+                       Text="{Binding OtherPlayer.Name, StringFormat='After you locked yourself with the your source in the pantry, 
+they finally spill out the beans. You now know that {0} is:'}"/>
 
                 <Image x:Name ="RoleImage" Grid.Row="1"/>
 

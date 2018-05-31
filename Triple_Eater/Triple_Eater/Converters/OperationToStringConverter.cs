@@ -17,8 +17,8 @@ namespace Triple_Eater.Converters
                 case Operation.Confession:
                     return "Confession";
  
-                case Operation.SecretIntel:
-                    return "Secret Intel";
+                case Operation.ForgetfulPartner:
+                    return "Forgetful Partner";
 
                 case Operation.AnonymousTip:
                     return "Anonymous Tip";

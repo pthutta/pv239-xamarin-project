@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using Triple_Eater.Converters;
 using Triple_Eater.DataModels;
 using Triple_Eater.Pages.EndGame;
 using Triple_Eater.Services;
@@ -60,10 +61,11 @@ namespace Triple_Eater.Pages.Actions
 
                 ActionOverviewLabel.Text = "Discussion phase";
                 ActionInfoLabel.Text = "";
+                var converter = new OperationToStringConverter();
                 foreach (var player in Players)
                 {
                     ActionInfoLabel.Text +=
-                        player.Name + " - " + player.Operation + Environment.NewLine;
+                        player.Name + " - " + converter.Convert(player.Operation, null, null, null) + Environment.NewLine;
                 }
                 ActionInfoLabel.HorizontalTextAlignment = TextAlignment.Start;
                 ActionInfoLabel.Margin = new Thickness(35, 5, 25, 5);

@@ -7,7 +7,7 @@ namespace Triple_Eater.DataModels
     public enum Operation
     {
         Confession,
-        SecretIntel,
+        ForgetfulPartner,
         AnonymousTip,
         NeighborhoodGossip,
         NightPhotographs
