@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Triple_Eater.Pages.EndGame.GameResultsPage12">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Label 
+            Margin="25, 5, 25, 5"
+            HorizontalTextAlignment="Center"
+            Grid.Row="0" 
+            Text="Flatmates"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+        />
+
+        <ListView Grid.Row="1" ItemsSource="{Binding Flatmates}" IsEnabled="False">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Label 
+                                Text="{Binding Name}"
+                                HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center"
+                            />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Label 
+            Margin="25, 5, 25, 5"
+            HorizontalTextAlignment="Center"
+            Grid.Row="2" 
+            Text="Gluttons"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+        />
+
+        <ListView Grid.Row="3" ItemsSource="{Binding Gluttons}" IsEnabled="False">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Label 
+                                Text="{Binding Name}"
+                                HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center"
+                            />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
+        <Button Grid.Row="4" VerticalOptions="Fill" HorizontalOptions="Center" Text="Done" Clicked="NextPageButton_OnClicked"/>
+    </Grid>
+</ContentPage>

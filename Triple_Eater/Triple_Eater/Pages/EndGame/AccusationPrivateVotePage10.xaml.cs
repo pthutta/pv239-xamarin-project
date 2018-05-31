@@ -56,7 +56,6 @@ namespace Triple_Eater.Pages.EndGame
             var selectedPlayer = Players.FirstOrDefault(player => player.Name == ((Button)sender).Text);
             selectedPlayer.AccusationCounter++;
             await App.Database.TryUpdatePlayerAsync(selectedPlayer);
-            Console.WriteLine(selectedPlayer.AccusationCounter);
 
             NavigationPage nextPage;
             int remainingPlayers = Players.Count(x => !x.WasProcessed);

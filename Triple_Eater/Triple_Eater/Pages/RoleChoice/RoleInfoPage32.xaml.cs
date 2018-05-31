@@ -52,6 +52,21 @@ namespace Triple_Eater.Pages.RoleChoice
             Players = new ObservableCollection<Player>(
                     await App.Database.TryGetAllPlayersAsync()
             );
+
+            if(CurrentPlayer.CurrentRole == Role.Flatmate)
+            {
+                RoleInfoLabel.Text = "There are currently " 
+                    + Players.Count(x => x.CurrentRole == Role.Glutton)
+                    + " gluttons.";
+            }
+            else
+            {
+                var currentPlayerPartner = Players
+                    .Where(x => x.CurrentRole == CurrentPlayer.CurrentRole)
+                    .FirstOrDefault(x => x.Guid != CurrentPlayer.Guid);
+                RoleInfoLabel.Text = "Your partner in crime is " + currentPlayerPartner.Name;
+            }
+
             base.OnAppearing();
         }
 
