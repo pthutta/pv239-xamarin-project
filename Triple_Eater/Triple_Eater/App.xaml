@@ -6,6 +6,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <local:OperationToStringConverter x:Key="OperationToStringConverter"/>
+            <local:IntToBoolConverter x:Key="IntToBoolConverter"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
