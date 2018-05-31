@@ -24,5 +24,7 @@ namespace Triple_Eater.DataModels
         // Reset to false after every finished group of actions over players
         public bool WasProcessed { get; set; }
 
+        public bool WasSelected { get; set; }
+
     }
 }

@@ -11,7 +11,7 @@ using Xamarin.Forms.Xaml;
 namespace Triple_Eater.Pages.Actions
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class AnonymousTipPage63 : ContentPage
+	public partial class SecretIntelResultsPage62 : ContentPage
 	{
 	    private Player _currentPlayer;
 
@@ -25,37 +25,25 @@ namespace Triple_Eater.Pages.Actions
 	        }
 	    }
 
-	    private Player _otherPlayer;
-
-	    public Player OtherPlayer
+        public SecretIntelResultsPage62 (Player currentPlayer, List<Player> selected)
         {
-	        get => _otherPlayer;
-	        set
-	        {
-	            _otherPlayer = value;
-	            RoleImage.Source = _otherPlayer?.OriginalRole == Role.Glutton ? "Glutton.png" : "Flatmates.jpg";
-                OnPropertyChanged();
-	        }
-	    }
-
-        public AnonymousTipPage63(Player currentPlayer)
-	    {
-	        InitializeComponent();
-	        BindingContext = this;
+            InitializeComponent();
+            BindingContext = this;
             CurrentPlayer = currentPlayer;
-            
+
+            if (selected.Any(p => p.CurrentRole == Role.Glutton))
+            {
+                ResultLabel.Text = "Intel reveals that at least one of them is a glutton!";
+                RoleImage.Source = "Glutton.png";
+            }
+            else
+            {
+                ResultLabel.Text = "Intel reveals that at none of them is a glutton.";
+                RoleImage.Source = "Flatmates.jpg";
+            }
         }
 
-	    protected override async void OnAppearing()
-	    {
-	        base.OnAppearing();
-
-	        var otherPlayers = (await App.Database.TryGetAllPlayersAsync()).Where(x => x.Guid != CurrentPlayer.Guid).ToList();
-	        var random = new Random();
-	        OtherPlayer = otherPlayers[random.Next(otherPlayers.Count)];
-	    }
-
-        public void NextPageButton_OnClicked(object sender, EventArgs e)
+	    public void NextPageButton_OnClicked(object sender, EventArgs e)
 	    {
 	        var nextPage = new NavigationPage(new ActionCountdownPage7());
 	        NavigationPage.SetHasNavigationBar(nextPage, false);
