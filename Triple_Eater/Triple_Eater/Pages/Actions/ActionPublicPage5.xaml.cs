@@ -31,23 +31,28 @@ namespace Triple_Eater.Pages.Actions
 	        switch (player.Operation)
 	        {
 	            case Operation.Confession:
-	                OperationLabel.Text = "This is operation text.";
+	                OperationLabel.Text = CurrentPlayer.Name + " could't hold the pressure anymore and must show one " +
+	                                      "(and only one) other friend which group they belong to.";
                     break;
 
-	            case Operation.SecretIntel:
-	                OperationLabel.Text = "This is operation text.";
+	            case Operation.ForgetfulPartner:
+	                OperationLabel.Text = CurrentPlayer.Name + " must choose two friends. Their forgetful partner " +
+	                                      "will reveal if either of them is a glutton.";
                     break;
 
 	            case Operation.AnonymousTip:
-	                OperationLabel.Text = "This is operation text.";
+	                OperationLabel.Text = CurrentPlayer.Name + "'s source knows the affiliation of one of their friends " +
+	                                      "and reveals it to them.";
                     break;
 
 	            case Operation.NeighborhoodGossip:
-	                OperationLabel.Text = "This is operation text.";
+	                OperationLabel.Text = CurrentPlayer.Name + " hears gossips about two names: one is a glutton " +
+	                                      "and the other is not.";
                     break;
 
 	            case Operation.NightPhotographs:
-	                OperationLabel.Text = "This is operation text.";
+	                OperationLabel.Text = CurrentPlayer.Name + " found evidence that shows them the names of two " +
+	                                      "friends that belonged to the same group at the start.";
                     break;
 
 	            default:
@@ -84,7 +89,7 @@ namespace Triple_Eater.Pages.Actions
                     nextPage = new NavigationPage(new ConfessionPage61(CurrentPlayer));
                     break;
 
-                case Operation.SecretIntel:
+                case Operation.ForgetfulPartner:
                     nextPage = new NavigationPage(new SecretIntelPage62(CurrentPlayer));
                     break;
 
