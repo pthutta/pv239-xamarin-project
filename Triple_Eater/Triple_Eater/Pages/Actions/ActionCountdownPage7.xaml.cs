@@ -59,6 +59,11 @@ namespace Triple_Eater.Pages.Actions
             {
                 _maxSeconds = 120;
 
+                //Todo: poresit pismo
+                ActionInfoLabel.FontAttributes = FontAttributes.Bold;
+
+                ActionInfoLabel.FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label));
+
                 ActionOverviewLabel.Text = "Discussion phase";
                 ActionInfoLabel.Text = "";
                 var converter = new OperationToStringConverter();

@@ -18,7 +18,8 @@
             </Grid.RowDefinitions>
 
             <Label Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center" 
-                   Text="{Binding CurrentPlayer.Operation, Converter={StaticResource OperationToStringConverter}}"/>
+                   Text="{Binding CurrentPlayer.Operation, Converter={StaticResource OperationToStringConverter}}"
+                    FontSize="Medium"/>
 
             <Image Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center" Source="Glutton.png"/>
 

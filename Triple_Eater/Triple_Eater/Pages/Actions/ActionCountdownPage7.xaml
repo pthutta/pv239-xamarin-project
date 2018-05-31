@@ -23,6 +23,7 @@
             Text="Waiting for next event to happen.." 
             VerticalOptions="Center" 
             HorizontalOptions="Center"
+             FontSize="Medium"
         />
 
         <Label 
@@ -31,6 +32,8 @@
             Grid.Column="1"
             VerticalOptions="Center" 
             HorizontalOptions="Center"
+             FontSize="Large"
+            FontAttributes="Bold"
         />
 
         <Label 
@@ -42,6 +45,7 @@
             Text="Return the device to the table. Now is the time to tell others about your new information. You may lie or tell the truth." 
             VerticalOptions="Center" 
             HorizontalOptions="Center"
+            FontAttributes="None"
         />
 
 

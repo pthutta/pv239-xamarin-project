@@ -20,9 +20,11 @@
         <Label 
             Margin="25, 5, 25, 5"
             HorizontalTextAlignment="Center"
-            Grid.Row="1" Text="Acussation time."
+            Grid.Row="1" 
+            Text="Acussation time."
             VerticalOptions="Center" 
             HorizontalOptions="Center"
+             FontSize="Medium"
         />
 
         <Label 

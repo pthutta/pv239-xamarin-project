@@ -15,7 +15,7 @@
                 <RowDefinition Height="3*"/>
             </Grid.RowDefinitions>
 
-            <Label Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center" Text="OPERATIONS PHASE"/>
+            <Label Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center" Text="OPERATIONS PHASE" FontSize="Medium"/>
 
             <Label Grid.Row="1" Margin="25, 5, 25, 5" VerticalOptions="Center" HorizontalOptions="Center" Text="Each person will be given one
 operation before you move on to the Accusation Phase."/>

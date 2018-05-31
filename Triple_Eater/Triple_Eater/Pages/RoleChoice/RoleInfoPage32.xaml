@@ -17,6 +17,7 @@
             Text="{Binding CurrentPlayer.Name}" 
             VerticalOptions="Center" 
             HorizontalOptions="Center"
+            FontSize="Medium"
         />
 
         <Label 

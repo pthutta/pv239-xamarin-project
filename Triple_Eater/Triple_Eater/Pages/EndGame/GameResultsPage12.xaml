@@ -18,6 +18,8 @@
             Text="Flatmates"
             VerticalOptions="Center" 
             HorizontalOptions="Center"
+             FontSize="Medium"
+            FontAttributes="Bold"
         />
 
         <ListView Grid.Row="1" ItemsSource="{Binding Flatmates}" IsEnabled="False">
@@ -43,6 +45,8 @@
             Text="Gluttons"
             VerticalOptions="Center" 
             HorizontalOptions="Center"
+             FontSize="Medium"
+            FontAttributes="Bold"
         />
 
         <ListView Grid.Row="3" ItemsSource="{Binding Gluttons}" IsEnabled="False">

@@ -17,6 +17,7 @@
             HorizontalTextAlignment="Center"
             VerticalOptions="Center" 
             HorizontalOptions="Center"
+             FontSize="Medium"
         />
 
         <Label 
@@ -26,6 +27,8 @@
             HorizontalTextAlignment="Center"
             VerticalOptions="Center" 
             HorizontalOptions="Center"
+             FontSize="Large"
+            FontAttributes="Bold"
         />
         
         <Label 

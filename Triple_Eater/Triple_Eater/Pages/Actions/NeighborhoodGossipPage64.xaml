@@ -18,7 +18,8 @@
             </Grid.RowDefinitions>
 
             <Label Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center" 
-                   Text="{Binding CurrentPlayer.Operation, Converter={StaticResource OperationToStringConverter}}"/>
+                   Text="{Binding CurrentPlayer.Operation, Converter={StaticResource OperationToStringConverter}}"
+                    FontSize="Medium"/>
 
             <Label Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center" Margin="25, 5, 25, 5"
                    Text="{Binding Players, StringFormat='Neighbors in your apartment building are mentioning {0}. One of them
