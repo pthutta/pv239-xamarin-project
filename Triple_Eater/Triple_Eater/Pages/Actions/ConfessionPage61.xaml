@@ -12,13 +12,29 @@
         <Grid Grid.Row="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
-                <RowDefinition Height="3*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="2*"/>
+                <RowDefinition Height="6*"/>
             </Grid.RowDefinitions>
 
             <Label Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center" 
                    Text="{Binding CurrentPlayer.Operation, Converter={StaticResource OperationToStringConverter}}"/>
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center" Margin="25, 5, 25, 5"
+                       Text="You must share your affiliation by showing this screen to one and only one other friend."/>
+
+                <Label Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center" Text="{Binding CurrentPlayer.Name}"/>
+                <Label Grid.Row="2" VerticalOptions="Center" HorizontalOptions="Center" Text="is:"/>
+
+                <Image x:Name ="RoleImage" Grid.Row="3"/>
+
+            </Grid>
 
         </Grid>
 

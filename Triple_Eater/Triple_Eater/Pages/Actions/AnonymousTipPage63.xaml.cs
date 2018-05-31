@@ -25,14 +25,37 @@ namespace Triple_Eater.Pages.Actions
 	        }
 	    }
 
-	    public AnonymousTipPage63(Player currentPlayer)
+	    private Player _otherPlayer;
+
+	    public Player OtherPlayer
+        {
+	        get => _otherPlayer;
+	        set
+	        {
+	            _otherPlayer = value;
+	            RoleImage.Source = _otherPlayer?.OriginalRole == Role.Glutton ? "Glutton.png" : "Flatmates.jpg";
+                OnPropertyChanged();
+	        }
+	    }
+
+        public AnonymousTipPage63(Player currentPlayer)
 	    {
 	        InitializeComponent();
 	        BindingContext = this;
             CurrentPlayer = currentPlayer;
+            
+        }
+
+	    protected override async void OnAppearing()
+	    {
+	        base.OnAppearing();
+
+	        var otherPlayers = (await App.Database.TryGetAllPlayersAsync()).Where(x => x.Guid != CurrentPlayer.Guid).ToList();
+	        var random = new Random();
+	        OtherPlayer = otherPlayers[random.Next(otherPlayers.Count)];
 	    }
 
-	    public void NextPageButton_OnClicked(object sender, EventArgs e)
+        public void NextPageButton_OnClicked(object sender, EventArgs e)
 	    {
 	        var nextPage = new NavigationPage(new ActionCountdownPage7());
 	        NavigationPage.SetHasNavigationBar(nextPage, false);

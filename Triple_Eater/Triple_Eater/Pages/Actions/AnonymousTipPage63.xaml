@@ -12,13 +12,24 @@
         <Grid Grid.Row="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
-                <RowDefinition Height="3*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="2*"/>
+                <RowDefinition Height="6*"/>
             </Grid.RowDefinitions>
 
             <Label Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center" 
                    Text="{Binding CurrentPlayer.Operation, Converter={StaticResource OperationToStringConverter}}"/>
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="3*"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center" Margin="25, 5, 25, 5"
+                       Text="{Binding OtherPlayer.Name, StringFormat='After meeting your source at a very remote location, they finally spill out the beans. You now know that {0} is:'}"/>
+
+                <Image x:Name ="RoleImage" Grid.Row="1"/>
+
+            </Grid>
 
         </Grid>
 

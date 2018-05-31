@@ -21,7 +21,8 @@ namespace Triple_Eater.Pages.Actions
 	        set
 	        {
 	            _currentPlayer = value;
-	            OnPropertyChanged();
+	            RoleImage.Source = _currentPlayer?.OriginalRole == Role.Glutton ? "Glutton.png" : "Flatmates.jpg";
+                OnPropertyChanged();
 	        }
 	    }
 
