@@ -22,8 +22,9 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
 
-            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Center" Text="MISSION BRIEFING" FontSize="Large" FontAttributes="Bold"/>
-
+            <Frame Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="0, 15, 0, 15">
+                <Label VerticalOptions="Center" HorizontalOptions="Center" Text="MISSION BRIEFING" FontSize="Large" FontAttributes="Bold"/>
+            </Frame>
 
             <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="25, 0, 25, 0" HorizontalTextAlignment="Center" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" FontSize="16" Text="You have received a message 
 that 2 out of the 5 of you are gluttons secretly eating your food from the fridge! Your briefing will tell you which group you 
