@@ -1,40 +1,47 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Triple_Eater.Pages.RoleChoice.RoleInfoInitPage31"
-             Title="Role Info">
+             x:Class="Triple_Eater.Pages.RoleChoice.RoleInfoInitPage31">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="1.5*"/>
-            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="1.25*"/>
+            <RowDefinition Height="0.6*"/>
+            <RowDefinition Height="1.075*"/>
+            <RowDefinition Height="0.4*"/>
+            <RowDefinition Height="1.075*"/>
+            <RowDefinition Height="0.6*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <Label 
-            Grid.Row="0" 
-            Text="{Binding CurrentPlayer.Name}" 
-            VerticalOptions="Center" 
-            HorizontalOptions="Center"
-            FontSize="Medium"
-        />
+        <Frame Grid.Row="0" Margin="0, 15, 0, 15">
+            <Label 
+                Text="{Binding CurrentPlayer.Name}" 
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                FontSize="Large"
+            />
+        </Frame>
 
-        <Label 
-            Margin="25, 5, 25, 5"
-            HorizontalTextAlignment="Center"
-            Grid.Row="1" Text="Press DONE to receive secret information about your attitute towards eating other's food."
-            VerticalOptions="Center" 
-            HorizontalOptions="Center"
-        />
+        <Frame Grid.Row="2" Margin="0, 5, 0, 5">
+            <Label 
+                Margin="25, 5, 25, 5"
+                HorizontalTextAlignment="Center"
+                Text="Press DONE to receive secret information about your attitute towards eating other's food."
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+            />
+        </Frame>
 
-        <Label 
-            Margin="25, 5, 25, 5"
-            HorizontalTextAlignment="Center"
-            Grid.Row="2" 
-            Text="Do not show the next screen with sensitive information to any other player."
-        />
+        <Frame Grid.Row="4" Margin="0, 5, 0, 5">
+            <Label 
+                Margin="25, 5, 25, 5"
+                HorizontalTextAlignment="Center"
+                VerticalOptions="Center" 
+                Text="Do not show the next screen with sensitive information to any other player."
+            />
+        </Frame>
 
-        <Button Grid.Row="3" VerticalOptions="Fill" HorizontalOptions="Center" Text="Done" Clicked="NextPageButton_OnClickedAsync"/>
+        <Button Grid.Row="6" Style="{StaticResource ContinueButton}"  VerticalOptions="Fill" HorizontalOptions="Center" Text="Done" Clicked="NextPageButton_OnClickedAsync"/>
     </Grid>
 </ContentPage>

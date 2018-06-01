@@ -33,12 +33,12 @@ namespace Triple_Eater.Pages.Actions
 
             if (selected.Any(p => p.CurrentRole == Role.Glutton))
             {
-                ResultLabel.Text = "Intel reveals that at least one of them is a glutton!";
+                ResultLabel.Text = "Your partner reveals that at least one of them is a glutton!";
                 RoleImage.Source = "Glutton.png";
             }
             else
             {
-                ResultLabel.Text = "Intel reveals that none of them is a glutton.";
+                ResultLabel.Text = "Your partner reveals that none of them is a glutton.";
                 RoleImage.Source = "Flatmates.jpg";
             }
         }

@@ -27,7 +27,7 @@
             </Frame>
 
             <Frame Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0, 5, 0, 5">
-                <Label Margin="25, 5, 25, 5" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" FontSize="Small" Text="You have received a message 
+                <Label Margin="25, 5, 25, 5" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" FontSize="16" Text="You have received a message 
 that 2 out of the 5 of you are gluttons secretly eating your food from the fridge! Your briefing will tell you which group you 
 belong to and what is your objective. You can only evict one person from the flat so make sure it's the right one."/>
             </Frame>
