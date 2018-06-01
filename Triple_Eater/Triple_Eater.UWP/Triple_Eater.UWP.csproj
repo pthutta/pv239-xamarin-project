@@ -106,6 +106,14 @@
     <None Include="Triple_Eater.UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Anonym.jpg" />
+    <Content Include="Assets\Camera.jpg" />
+    <Content Include="Assets\Confession.jpg" />
+    <Content Include="Assets\Flatmates.jpg" />
+    <Content Include="Assets\Glutton.jpg" />
+    <Content Include="Assets\Gossip.jpg" />
+    <AndroidResource Include="Assets\icon.png" />
+    <Content Include="Assets\Partner.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-100.png" />
     <Content Include="Assets\LockScreenLogo.scale-125.png" />

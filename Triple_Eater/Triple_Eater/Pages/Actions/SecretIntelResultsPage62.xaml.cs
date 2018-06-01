@@ -34,7 +34,7 @@ namespace Triple_Eater.Pages.Actions
             if (selected.Any(p => p.CurrentRole == Role.Glutton))
             {
                 ResultLabel.Text = "Your partner reveals that at least one of them is a glutton!";
-                RoleImage.Source = "Glutton.png";
+                RoleImage.Source = "Glutton.jpg";
             }
             else
             {
