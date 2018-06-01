@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -79,6 +80,12 @@ namespace Triple_Eater.Pages
         {
             DependencyService.Get<IMinimizeAppService>().Minimize();
             return true;
+        }
+
+        private void ListView_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var listView = (ListView) sender;
+            listView.SelectedItem = null;
         }
     }
 }

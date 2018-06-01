@@ -7,6 +7,27 @@
         <ResourceDictionary>
             <local:OperationToStringConverter x:Key="OperationToStringConverter"/>
             <local:IntToBoolConverter x:Key="IntToBoolConverter"/>
+            
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="DodgerBlue"/>
+                <Setter Property="BackgroundColor" Value="LightSkyBlue"/>
+            </Style>
+            
+            <Style TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="OutlineColor" Value="Black"/>
+                <Setter Property="HasShadow" Value="True"/>
+            </Style>
+
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="Black"/>
+            </Style>
+
+            <Style TargetType="Button" x:Key="ContinueButton">
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="BorderColor" Value="Black"/>
+                <Setter Property="BorderWidth" Value="1"/>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
