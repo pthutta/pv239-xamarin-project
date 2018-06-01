@@ -51,7 +51,7 @@ namespace Triple_Eater.Pages
 	            player.CurrentRole = role;
 
                 players.RemoveAt(index);
-	            App.Database.TryUpdatePlayerAsync(player);
+	            await App.Database.TryUpdatePlayerAsync(player);
 	        }
         }
     }

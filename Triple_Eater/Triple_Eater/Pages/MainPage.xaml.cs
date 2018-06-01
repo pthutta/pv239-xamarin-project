@@ -37,12 +37,22 @@ namespace Triple_Eater.Pages
         {
             base.OnAppearing();
 
-            Players = new ObservableCollection<Player>(
-                await App.Database.TryGetAllPlayersAsync()
-            );
+            var playersFromDb = await App.Database.TryGetAllPlayersAsync();
+
+            Players = new ObservableCollection<Player>(playersFromDb);
+
+            // Sometimes there is an error leading to broken DB with more than 5 players; f.e. after an exception
+            // Therefore this fix
+            if (Players.Count > 5)
+            {
+                await App.Database.DropDatabase();
+                await App.Database.InitDatabase();
+            }
 
             if (Players.Count == 0)
             {
+                await App.Database.DropDatabase();
+                await App.Database.InitDatabase();
                 for (int i = 0; i < 5; i++)
                 {
                     Players.Add(new Player()
