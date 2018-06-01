@@ -22,23 +22,19 @@
                         FontSize="Large"/>
             </Frame>
 
-            <Frame Grid.Row="1" Margin="0, 25, 0, 25" Padding="0, 1, 0, 1">
-                <Label VerticalOptions="Center" HorizontalOptions="Center" Margin="25, 5, 25, 5"
+            <Label Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center" Margin="25, 5, 25, 5"
                    Text="{Binding Players, StringFormat='The night photos from kitchen show that {0} belonged to the same 
 group at the start.'}"/>
-            </Frame>
 
-            <Frame Grid.Row="2" Padding="0, 1, 0, 1" Margin="0, 25, 0, 55">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="2*"/>
-                    </Grid.RowDefinitions>
+            <Grid Grid.Row="2" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
 
-                    <Label Grid.Row="0" VerticalOptions="End" HorizontalOptions="Center" Text="Belonged to the same group:"/>
-                    <Label Grid.Row="1" VerticalOptions="Start" HorizontalOptions="Center" Text="{Binding Players}" FontSize="Large"/>
-                </Grid>
-            </Frame>
+                <Label Grid.Row="0" VerticalOptions="End" HorizontalOptions="Center" Text="Belonged to the same group:"/>
+                <Label Grid.Row="1" VerticalOptions="Start" HorizontalOptions="Center" Text="{Binding Players}" FontSize="Large"/>
+            </Grid>
         </Grid>
 
         <Button Grid.Row="1" Style="{StaticResource ContinueButton}" VerticalOptions="Fill" HorizontalOptions="Center" Text="Done" Clicked="NextPageButton_OnClicked"/>

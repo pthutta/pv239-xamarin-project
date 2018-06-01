@@ -25,13 +25,9 @@
 
             <Image x:Name="ActionImage" Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center"/>
 
-            <Frame Grid.Row="2" Padding="0, 1, 0, 1">
-                <Label Margin="25, 5, 25, 5" VerticalOptions="Center" HorizontalOptions="Center" Text="Read following information out loud:"/>
-            </Frame>
+            <Label Grid.Row="2" Margin="25, 5, 25, 5" VerticalOptions="Center" HorizontalOptions="Center" Text="Read following information out loud:"/>
 
-            <Frame Grid.Row="3" Margin="0, 15, 0, 10" Padding="0, 1, 0, 1">
-                <Label x:Name="OperationLabel" Margin="25, 5, 25, 5" VerticalOptions="Center" HorizontalOptions="Center"/>
-            </Frame>
+            <Label x:Name="OperationLabel"  Grid.Row="3"  Margin="25, 5, 25, 5" VerticalOptions="Center" HorizontalOptions="Center"/>
         </Grid>
 
         <Button Grid.Row="1" Style="{StaticResource ContinueButton}" VerticalOptions="Fill" HorizontalOptions="Center" Text="Done" Clicked="NextPageButton_OnClicked"/> 
