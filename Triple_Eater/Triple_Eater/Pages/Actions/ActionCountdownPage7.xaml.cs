@@ -58,11 +58,10 @@ namespace Triple_Eater.Pages.Actions
             if (_remainingPlayers == 0)
             {
                 _maxSeconds = 120;
-
-                //Todo: poresit pismo
+                
                 ActionInfoLabel.FontAttributes = FontAttributes.Bold;
-
                 ActionInfoLabel.FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label));
+                ActionInfoLabel.Margin = new Thickness(5, 5, 5, 5);
 
                 ActionOverviewLabel.Text = "Discussion phase";
                 ActionInfoLabel.Text = "";
@@ -73,13 +72,14 @@ namespace Triple_Eater.Pages.Actions
                         player.Name + " - " + converter.Convert(player.Operation, null, null, null) + Environment.NewLine;
                 }
                 ActionInfoLabel.HorizontalTextAlignment = TextAlignment.Start;
-                ActionInfoLabel.Margin = new Thickness(35, 5, 25, 5);
                 nextPage = new NavigationPage(new AccusationPublicPage9());
 
                 await ResetWasProcessedFlag();
             }
             else
             {
+
+                ActionInfoLabel.Margin = new Thickness(25, 5, 25, 5);
                 nextPage = new NavigationPage(new ActionPublicPage5());
             }
             NavigationPage.SetHasNavigationBar(nextPage, false);

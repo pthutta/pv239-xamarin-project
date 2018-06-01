@@ -9,18 +9,21 @@
             <RowDefinition Height="4*"/>
         </Grid.RowDefinitions>
 
-        <Label 
-            Grid.Row="0" 
-            Text="{Binding CurrentPlayer.Name}" 
-            VerticalOptions="Center" 
-            HorizontalOptions="Center"
-             FontSize="Medium"
-        />
+
+        <Frame Grid.Row="0">
+            <Label 
+                Text="{Binding CurrentPlayer.Name}" 
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                 FontSize="Medium"
+            />
+        </Frame>
 
         <Label 
             Margin="25, 5, 25, 5"
             HorizontalTextAlignment="Center"
-            Grid.Row="1" Text="Choose who you want to accuse and press Done."
+            Grid.Row="1" 
+            Text="Choose who you want to accuse and press button with their name."
             VerticalOptions="Center" 
             HorizontalOptions="Center"
         />

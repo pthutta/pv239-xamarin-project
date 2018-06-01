@@ -40,7 +40,7 @@
             x:Name="ActionInfoLabel"
             Grid.Row="2"
             Grid.Column="1"
-            Margin="25, 5, 25, 5"
+            Grid.ColumnSpan="1"
             HorizontalTextAlignment="Center"
             Text="Return the device to the table. Now is the time to tell others about your new information. You may lie or tell the truth." 
             VerticalOptions="Center" 

@@ -17,15 +17,17 @@
             HorizontalOptions="Center"
         />
 
-        <Label 
-            Margin="25, 5, 25, 5"
-            HorizontalTextAlignment="Center"
-            Grid.Row="1" 
-            Text="Acussation time."
-            VerticalOptions="Center" 
-            HorizontalOptions="Center"
-             FontSize="Medium"
-        />
+        <Frame Grid.Row="0" Margin="0, 15, 0, 15">
+            <Label 
+                Margin="25, 5, 25, 5"
+                HorizontalTextAlignment="Center"
+                Grid.Row="1" 
+                Text="Acussation time."
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                 FontSize="Medium"
+            />
+        </Frame>
 
         <Label 
             Margin="25, 5, 25, 5"
